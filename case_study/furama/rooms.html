@@ -68,7 +68,7 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a href="index.html">home</a></li>
-                                    <li><a class="active" href="rooms.html">Facilities</a></li>
+                                    <li><a class="active" href="rooms.html">Facility</a></li>
                                     <li><a href="about.html">About</a></li>
                                     <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
@@ -81,7 +81,7 @@
                                             <li><a href="elements.html">elements</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="contact.html">Contract</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -211,6 +211,7 @@
                     <a href="#" class="book_now">book now</a>
                 </div>
             </div>
+
             <div class="col-xl-4 col-md-4">
                 <div class="single_offers">
                     <div class="about_thumb">
@@ -222,55 +223,27 @@
                         <li>Diện tích phòng: 43.7 m</li>
                     </ul>
                     <a href="#" class="book_now">book now</a>
+                    <div>
+                        <!--                delete-->
+                        <a href="#"
+                           onclick="employeeIndex(id, 'name')"
+                           data-toggle="modal"
+                           data-target="#delete">
+                            <button style="float: right" class="btn btn-light">
+                                <i style=" font-size: 1.5rem" class="fa-solid fa-trash-can btn text-danger"></i>
+                            </button>
+                        </a>
+
+                        <!--                update-->
+                        <button style="float: right;" class="updateEmployee btn btn-light" data-toggle="modal"
+                                data-target="#form-update"><i style="font-size: 1.5rem"
+                                                              class="fa-solid fa-pen-to-square btn text-info"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- instragram_area_start -->
-<div class="instragram_area">
-    <div class="single_instagram">
-        <img src="img/instragram/1.png" alt="">
-        <div class="ovrelay">
-            <a href="#">
-                <i class="fa fa-instagram"></i>
-            </a>
-        </div>
-    </div>
-    <div class="single_instagram">
-        <img src="img/instragram/2.png" alt="">
-        <div class="ovrelay">
-            <a href="#">
-                <i class="fa fa-instagram"></i>
-            </a>
-        </div>
-    </div>
-    <div class="single_instagram">
-        <img src="img/instragram/3.png" alt="">
-        <div class="ovrelay">
-            <a href="#">
-                <i class="fa fa-instagram"></i>
-            </a>
-        </div>
-    </div>
-    <div class="single_instagram">
-        <img src="img/instragram/4.png" alt="">
-        <div class="ovrelay">
-            <a href="#">
-                <i class="fa fa-instagram"></i>
-            </a>
-        </div>
-    </div>
-    <div class="single_instagram">
-        <img src="img/instragram/5.png" alt="">
-        <div class="ovrelay">
-            <a href="#">
-                <i class="fa fa-instagram"></i>
-            </a>
-        </div>
-    </div>
-</div>
-<!-- instragram_area_end -->
 
 <!-- footer -->
 <footer class="footer">
@@ -473,9 +446,8 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTo ({ top: 0,behavior :"smooth"});
     }
+
 </script>
-
-
 </body>
 
 </html>
