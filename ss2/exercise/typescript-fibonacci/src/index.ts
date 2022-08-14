@@ -1,19 +1,16 @@
-// happy coding 👻
-function fibonacci(n: number): number {
-    if (n <= 2) {
+// @ts-ignore
+function fibonacci(number: number) {
+    if (number <= 1) {
         return 1;
-    } else {
-        return fibonacci(n - 1) + fibonacci(n - 2);``
     }
+    return fibonacci(number - 1) + fibonacci(number - 2);
 }
-
-let sum = 0;
-
-console.log("10 số fibonaci đầu tiên là:");
-
-for (let i = 1; i <= 10; i++) {
-    console.log(fibonacci(i))
+var array = [0,1];
+var sum = 1;
+for (var i = 1; i <= 5; i++) {
+    array.push(fibonacci(i));
     sum += fibonacci(i);
 }
 
-console.log("Tổng 10 số fibonaci đầu tiên: " + sum);
+console.log(array.toString());
+console.log("Tổng 10 số fibonacci đầu tiên: " + sum);
