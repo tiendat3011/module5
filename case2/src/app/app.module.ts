@@ -9,7 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FacilityComponent } from './facility/facility.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ContractComponent } from './contract/contract.component';
-
+import { ModalEditComponent } from './modal-edit/modal-edit.component';
+import { ModalCreateComponent } from './modal-create/modal-create.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,11 +19,14 @@ import { ContractComponent } from './contract/contract.component';
     FooterComponent,
     FacilityComponent,
     CustomerComponent,
-    ContractComponent
+    ContractComponent,
+    ModalEditComponent,
+    HomeComponent,
+    ModalCreateComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
