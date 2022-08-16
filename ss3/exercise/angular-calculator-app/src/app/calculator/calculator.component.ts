@@ -12,25 +12,32 @@ export class CalculatorComponent implements OnInit {
   number2 = '';
 
   result = 0;
+  error: string;
 
-  Addition() {
-    this.result = parseFloat(this.number1) + parseFloat(this.number2);
-  }
-
-  Subtraction() {
-    this.result = parseFloat(this.number1) - parseFloat(this.number2);
-  }
-
-  Multiplication() {
-    this.result = parseFloat(this.number1) * parseFloat(this.number2);
-  }
-
-  Division() {
-    this.result = parseFloat(this.number1) / parseFloat(this.number2);
-  }
   constructor() {
   }
 
   ngOnInit(): void {
+  }
+
+  change(s: string) {
+    switch (s) {
+      case 'Addition':
+        this.result = parseFloat(this.number1) + parseFloat(this.number2);
+        break;
+      case 'Subtraction':
+        this.result = parseFloat(this.number1) - parseFloat(this.number2);
+        break;
+      case 'Multiplication':
+        this.result = parseFloat(this.number1) * parseFloat(this.number2);
+        break;
+      case 'Division':
+        if (this.result === 0) {
+          return this.error = 'can not Division ';
+        } else {
+          this.result = parseFloat(this.number1) / parseFloat(this.number2);
+          break;
+        }
+    }
   }
 }
