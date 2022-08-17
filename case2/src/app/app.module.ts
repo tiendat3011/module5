@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-import { FacilityComponent } from './facility/facility.component';
-import { CustomerComponent } from './customer/customer.component';
+import { FacilityComponent } from './facility/facility/facility.component';
+import { CustomerComponent } from './customer/customer/customer.component';
 import { ContractComponent } from './contract/contract.component';
-import { ModalEditComponent } from './modal-edit/modal-edit.component';
-import { ModalCreateComponent } from './modal-create/modal-create.component';
+import { ModalCreateCustomerComponent } from './customer/modal-create-customer/modal-create-customer.component';
+import { ModalUpdateCustomerComponent } from './customer/modal-update-customer/modal-update-customer.component';
+import { ModalUpdateFacilityComponent } from './facility/modal-update-facility/modal-update-facility.component';
+import { ModalCreateFacilityComponent } from './facility/modal-create-facility/modal-create-facility.component';
+import { ModalCreateContractComponent } from './contract/modal-create-contract/modal-create-contract.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,9 +23,12 @@ import { ModalCreateComponent } from './modal-create/modal-create.component';
     FacilityComponent,
     CustomerComponent,
     ContractComponent,
-    ModalEditComponent,
     HomeComponent,
-    ModalCreateComponent,
+    ModalCreateCustomerComponent,
+    ModalUpdateCustomerComponent,
+    ModalUpdateFacilityComponent,
+    ModalCreateFacilityComponent,
+    ModalCreateContractComponent,
   ],
   imports: [
     BrowserModule,
