@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { FacilityComponent } from './facility/facility/facility.component';
 import { CustomerComponent } from './customer/customer/customer.component';
-import { ContractComponent } from './contract/contract.component';
+import { ContractComponent } from './contract/contract/contract.component';
 import { ModalCreateCustomerComponent } from './customer/modal-create-customer/modal-create-customer.component';
 import { ModalUpdateCustomerComponent } from './customer/modal-update-customer/modal-update-customer.component';
 import { ModalUpdateFacilityComponent } from './facility/modal-update-facility/modal-update-facility.component';

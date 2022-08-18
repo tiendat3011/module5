@@ -7,6 +7,11 @@
   <div class="container-fluid body">
     <div class="center container-fluid">
       <h1 style="text-align: center ">List Contract</h1>
+      <div style="text-align: center" >
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModalCreateContract">
+          Create
+        </button>
+      </div>
       <table style="border-collapse:  collapse; width: 100%" id="employeeList">
         <thead>
         <tr>
@@ -18,36 +23,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td class="text-center">1</td>
-          <td class="text-center">10-08-2022</td>
-          <td class="text-center">18-08-2022</td>
-          <td class="text-center">50000</td>
-          <td class="text-center">100000</td>
-        </tr>
-
-        <tr>
-          <td class="text-center">2</td>
-          <td class="text-center">10-08-2022</td>
-          <td class="text-center">19-08-2022</td>
-          <td class="text-center">20000</td>
-          <td class="text-center">30000</td>
-        </tr>
-
-        <tr>
-          <td class="text-center">3</td>
-          <td class="text-center">10-08-2022</td>
-          <td class="text-center">20-07-2022</td>
-          <td class="text-center">40000</td>
-          <td class="text-center">100000</td>
-        </tr>
-
-        <tr>
-          <td class="text-center">4</td>
-          <td class="text-center">10-08-2022</td>
-          <td class="text-center">21-08-2022</td>
-          <td class="text-center">15000</td>
-          <td class="text-center">20000</td>
+        <tr  *ngFor="let contract of contract ; index as i ">
+          <td class="text-center">{{i+1}}</td>
+          <td class="text-center">{{contract.contractStartDay}}</td>
+          <td class="text-center">{{contract.contractEndDay}}</td>
+          <td class="text-center">{{contract.contractDeposit}}</td>
+          <td class="text-center">{{contract.contractTotalMoney}}</td>
         </tr>
         </tbody>
       </table>
@@ -62,3 +43,4 @@
     </div>
   </div>
 </div>
+<app-modal-create-contract></app-modal-create-contract>
