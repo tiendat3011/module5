@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {CustomerComponent} from './customer/customer/customer.component';
+import {CustomerComponent} from './customer/component/customer/customer.component';
 import {FacilityComponent} from './facility/facility/facility.component';
 import {ContractComponent} from './contract/contract/contract.component';
 

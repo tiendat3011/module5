@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Customer} from '../../model/customer';
+import {Customer} from '../model/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -14,37 +14,59 @@ export class CustomerService {
     customerCode: 'KH-1111',
     customerName: 'Võ Tiến Đạt',
     customerBirthday: '29-11-1999',
-    customerGender: 'Nam',
+    customerGender: 1,
     customerIdCard: '123456789',
     customerPhone: '0336761813',
     customerEmail: 'tiendat30111999@gmail.com',
     customerAddress: 'Đà Nẵng',
-    customerTypeName: 'Diamond'
+    customerType: {customerTypeId: 1, customerTypeName: 'Diamond'}
+
   }, {
     customerId: 2,
     customerCode: 'KH-2222',
     customerName: 'Võ Như Hùng',
     customerBirthday: '28-11-1999',
-    customerGender: 'Nam',
+    customerGender: 1,
     customerIdCard: '123456789',
     customerPhone: '0336761813',
     customerEmail: 'hungvonhu30111999@gmail.com',
     customerAddress: 'Quảng Trị',
-    customerTypeName: 'Gold'
+    customerType: {customerTypeId: 2, customerTypeName: 'Platinum'}
   }, {
     customerId: 3,
     customerCode: 'KH-3333',
     customerName: 'Phạm Thành Tri',
     customerBirthday: '27-11-1999',
-    customerGender: 'Nam',
+    customerGender: 1,
     customerIdCard: '123456789',
     customerPhone: '0336761813',
     customerEmail: 'trisida30111999@gmail.com',
     customerAddress: 'Gia Lai',
-    customerTypeName: 'Sliver'
+    customerType: {customerTypeId: 3, customerTypeName: 'Gold'},
+
   }];
 
   getAll() {
     return this.customer;
   }
-}
+
+  create(customer: Customer) {
+    this.customer.push(customer);
+  }
+
+  findById(id: number) {
+    return this.customer.find(product => product.customerId === id);
+  }
+  update(id: number, customer: Customer) {
+    for (let i = 0; i < this.customer.length; i++) {
+      if (this.customer[i].customerId === id) {
+        this.customer[i] = customer;
+      }
+    }
+  }
+
+  delete(id: number) {
+    this.customer = this.customer.filter(customer => {
+      return customer.customerId !== id;
+    });
+  }}

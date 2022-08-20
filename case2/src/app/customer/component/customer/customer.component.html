@@ -1,0 +1,218 @@
+<div class="bradcam_area breadcam_bg">
+  <h3>Customer</h3>
+</div>
+
+<!-- List-->
+<div class="bg-menu table text-center table  font-weight-bold" style="padding-top: 100px">
+  <div class="container-fluid body">
+    <div class="center container-fluid">
+      <h1 style="text-align: center ">List Customer</h1>
+      <div>
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                data-bs-target="#form-create">
+          Create
+        </button>
+      </div>
+      <table style="border-collapse:  collapse; width: 100%" id="employeeList">
+        <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center">Name</th>
+          <th class="text-center">Gender</th>
+          <th class="text-center">Id Card</th>
+          <th class="text-center">Day Of Birth</th>
+          <th class="text-center">Phone</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">Address</th>
+          <th class="text-center">Customer Type</th>
+          <th class="text-center">Update</th>
+          <th class="text-center">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let customer of customer ; index as i ">
+          <td>{{i + 1}}</td>
+          <td>{{customer.customerName}}</td>
+          <td>
+            <span>{{customer.customerGender == 1}}Male</span>
+            <span>{{customer.customerGender == 2}}Female</span>
+            <span>{{customer.customerGender == 3}}Other</span>
+          </td>
+          <td>{{customer.customerIdCard}}</td>
+          <td>{{customer.customerBirthday| date: 'dd/MM/yyyy'}}</td>
+          <td>{{customer.customerPhone}}</td>
+          <td>{{customer.customerEmail}}</td>
+          <td>{{customer.customerAddress}}</td>
+          <td>{{customer.customerType.customerTypeName}}</td>
+
+          <td>
+<!--            <a routerLink="/update-customer/{{customer.customerId}}" (click)="update()"-->
+<!--               data-toggle="modal"-->
+<!--               data-target="#form-update">-->
+<!--              <button class="btn btn-light">Update</button>-->
+<!--            </a>-->
+          </td>
+          <td>
+            <a style="color: white" href="#"
+               (click)="valueOf(customer.customerId, customer.customerName)"
+               data-toggle="modal"
+               data-target="#delete">
+              <button class="btn btn-light">
+                Delete
+              </button>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <button class="btn btn-light">Previous</button>
+      <button class="btn btn-light">1</button>
+      <button class="btn btn-light">2</button>
+      <button class="btn btn-light">...</button>
+      <button class="btn btn-light">Next</button>
+    </div>
+  </div>
+</div>
+<!--<app-modal-update-customer></app-modal-update-customer>-->
+<!--<app-modal-create-customer></app-modal-create-customer>-->
+
+
+<form [formGroup]="customerFormUpdate" (ngSubmit)="onSubmitCreate()" novalidate>
+  <div class="modal " id="form-create">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="p-3 bg-modal">
+          <h4 style="text-align: center">Thêm thông tin khách hàng</h4>
+
+
+          <input class="form-control" type="text" formControlName="customerId" hidden [value]="null">
+
+
+          <div class="form-group">
+            <label>Mã khách hàng</label>
+            <input class="form-control" type="text" formControlName="customerCode">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerCode.hasError('required')
+        && (customerFormUpdate.controls.customerCode.dirty || customerFormUpdate.controls.customerCode.touched)">
+            Input code, pls!!!
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerCode.hasError('pattern')
+        && (customerFormUpdate.controls.customerCode.dirty || customerFormUpdate.controls.customerCode.touched)">
+            Wrong format !!!
+          </div>
+
+          <div class="form-group">
+            <label>Tên khách hàng</label>
+            <input class="form-control" type="text" formControlName="customerName">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerName.hasError('required')
+        && (customerFormUpdate.controls.customerName.dirty || customerFormUpdate.controls.customerName.touched)">
+            Input name, pls!!!
+          </div>
+
+          <div class="form-group">
+            <label>Ngày sinh</label>
+            <input class="form-control" type="date" formControlName="customerBirthday">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerBirthday.hasError('required')
+        && (customerFormUpdate.controls.customerBirthday.dirty || customerFormUpdate.controls.customerBirthday.touched)">
+            Input day of birth, pls!!!
+          </div>
+
+          <div class="form-group">
+            <label>Giới tính</label>
+            <select formControlName="customerGender" class="form-control w-100">
+              <option value="">----- Vui lòng chọn -----</option>
+              <option value="0">Nam</option>
+              <option value="1">Nữ</option>
+              <option value="2">Khác</option>
+            </select>
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerGender.hasError('required')
+        && (customerFormUpdate.controls.customerGender.dirty || customerFormUpdate.controls.customerGender.touched)">
+            Choose gender, pls!!!
+          </div>
+
+          <div class="form-group">
+            <label>Căn cước công dân</label>
+            <input class="form-control" type="text" formControlName="customerIdCard">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerIdCard.hasError('required')
+        && (customerFormUpdate.controls.customerIdCard.dirty || customerFormUpdate.controls.customerIdCard.touched)">
+            Input Id Card, pls!!!
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerIdCard.hasError('pattern')
+        && (customerFormUpdate.controls.customerIdCard.dirty || customerFormUpdate.controls.customerIdCard.touched)">
+            Wrong format !!!
+          </div>
+
+          <div class="form-group">
+            <label>Số điện thoại</label>
+            <input class="form-control" type="text" formControlName="customerPhone">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerPhone.hasError('required')
+        && (customerFormUpdate.controls.customerPhone.dirty || customerFormUpdate.controls.customerPhone.touched)">
+            Input phone number, pls!!!
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerPhone.hasError('pattern')
+        && (customerFormUpdate.controls.customerPhone.dirty || customerFormUpdate.controls.customerPhone.touched)">
+            Wrong format!!!
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" type="text" formControlName="customerEmail">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerEmail.hasError('required')
+        && (customerFormUpdate.controls.customerEmail.dirty || customerFormUpdate.controls.customerEmail.touched)">
+            Input email, pls!!!
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerEmail.hasError('email')
+        && (customerFormUpdate.controls.customerEmail.dirty || customerFormUpdate.controls.customerEmail.touched)">
+            Wrong format !!!
+          </div>
+
+          <div class="form-group">
+            <label>Địa chỉ</label>
+            <input class="form-control" type="text" formControlName="customerAddress">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="customerFormUpdate.controls.customerAddress.hasError('required')
+        && (customerFormUpdate.controls.customerAddress.dirty || customerFormUpdate.controls.customerAddress.touched)">
+            Input address, pls!!!
+          </div>
+
+          <div class="form-group">
+            <label>Kiểu khách hàng</label>
+            <select class="form-control w-100" formControlName="customerType">
+              <option value="">----- Vui lòng chọn -----</option>
+              <option [ngValue]="tc.customerTypeId"
+                      *ngFor="let tc of   ">{{tc.customerTypeName}}</option>
+            </select>
+          </div>
+
+          c
+
+          <button class="btn btn-dark" (click)="onSubmitCreate()" [disabled]="customerFormUpdate.invalid"
+                  data-dismiss="modal">Add new
+          </button>
+          &nbsp;
+          <button class="btn btn-dark" type="submit" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

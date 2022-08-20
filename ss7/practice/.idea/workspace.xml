@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a5b8090a-525a-4ffc-8ca6-84859ee24a08" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/customer/customer.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/customer/customer.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/modal-create-customer/modal-create-customer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/contract/service/contract.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/contract/service/contract.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/customer/customer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/customer/customer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/customer/customer.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/customer/customer.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/customer/customer.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/customer/customer.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/modal-create-customer/modal-create-customer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/modal-create-customer/modal-create-customer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/modal-create-customer/modal-create-customer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/modal-create-customer/modal-create-customer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/modal-create-customer/modal-create-customer.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/modal-create-customer/modal-create-customer.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/modal-create-customer/modal-create-customer.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/modal-update-customer/modal-update-customer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/modal-update-customer/modal-update-customer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/modal-update-customer/modal-update-customer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/modal-update-customer/modal-update-customer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/modal-update-customer/modal-update-customer.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/modal-update-customer/modal-update-customer.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/modal-update-customer/modal-update-customer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/component/modal-update-customer/modal-update-customer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/service/customer.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/customer/service/customer.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/service/customer.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/facility/modal-update-facility/modal-update-facility.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/facility/modal-update-facility/modal-update-facility.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case2/src/app/model/customer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../case2/src/app/customer/model/customer.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2DbTqSMiOEWiz4u8Ge3puOjqapr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/module5",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a5b8090a-525a-4ffc-8ca6-84859ee24a08" name="Changes" comment="" />
+      <created>1660966974823</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660966974823</updated>
+      <workItem from="1660966976075" duration="616000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

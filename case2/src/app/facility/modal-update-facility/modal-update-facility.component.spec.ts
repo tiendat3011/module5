@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalUpdateFacilityComponent } from './modal-update-facility.component';
 
-describe('ModalEditFacilityComponent', () => {
+describe('ModalUpdateFacilityComponent', () => {
   let component: ModalUpdateFacilityComponent;
   let fixture: ComponentFixture<ModalUpdateFacilityComponent>;
 
