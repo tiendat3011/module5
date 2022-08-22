@@ -1,82 +1,70 @@
 import {Injectable} from '@angular/core';
 import {Customer} from '../model/customer';
-import {CustomerType} from '../model/type-customer';
+import {CustomerTypeService} from './customer-type.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  customerTypes: CustomerType[];
+  customerList: Customer[] = [];
 
-  constructor() {
+  constructor(private customerTypeService: CustomerTypeService) {
+    this.customerList.push({
+      id: 1,
+      name: 'Võ Tiến ',
+      birthday: '01-01-1990', gender: true, idCard: '123456789',
+      phone: 12345,
+      email: 'hoa@gmail.com',
+      address: 'QN',
+      customerType: customerTypeService.customerTypeList[0]
+    }, {
+      id: 2, name: 'Ly', birthday: '02-02-1999', gender: false, idCard: '222222',
+      phone: 789123, email: 'ly@gmail.com', address: 'Da Nang', customerType: customerTypeService.customerTypeList[1]
+    }, {
+      id: 3, name: 'Duc', birthday: '03-03-1995', gender: true, idCard: '333333',
+      phone: 132342, email: 'duc@gmail.com', address: 'HN', customerType: customerTypeService.customerTypeList[1]
+    });
   }
-
-  customer: Customer[] = [
-    {
-      customerId: 1,
-      customerCode: 'KH-1111',
-      customerName: 'Võ Tiến Đạt',
-      customerBirthday: '29-11-1999',
-      customerGender: 1,
-      customerIdCard: '123456789',
-      customerPhone: '0336761813',
-      customerEmail: 'tiendat30111999@gmail.com',
-      customerAddress: 'Đà Nẵng',
-      customerType: {customerTypeId: 1, customerTypeName: 'Diamond'}
-
-    }, {
-      customerId: 2,
-      customerCode: 'KH-2222',
-      customerName: 'Võ Như Hùng',
-      customerBirthday: '28-11-1999',
-      customerGender: 1,
-      customerIdCard: '123456789',
-      customerPhone: '0336761813',
-      customerEmail: 'hungvonhu30111999@gmail.com',
-      customerAddress: 'Quảng Trị',
-      customerType: {customerTypeId: 2, customerTypeName: 'Platinum'}
-    }, {
-      customerId: 3,
-      customerCode: 'KH-3333',
-      customerName: 'Phạm Thành Tri',
-      customerBirthday: '27-11-1999',
-      customerGender: 1,
-      customerIdCard: '123456789',
-      customerPhone: '0336761813',
-      customerEmail: 'trisida30111999@gmail.com',
-      customerAddress: 'Gia Lai',
-      customerType: {customerTypeId: 3, customerTypeName: 'Gold'},
-    }
-    ];
 
   getAll() {
-    return this.customer;
+    return this.customerList;
   }
 
-  create(customer: Customer) {
-    this.customer.push(customer);
-  }
-
-  findById(id: number) {
-    return this.customer.find(customer => customer.customerId === id);
-  }
-
-  updateCustomer(id: number, customer: Customer) {
-    for (const item of this.customerTypes) {
-      if (customer.customerType.name === item.customerTypeName) {
-        customer.customerType = item;
-      }
+  save(customer) {
+    customer.id = this.customerList.length + 1;
+    if (customer.customerType === 1) {
+      customer.customerType = this.customerTypeService.customerTypeList[0];
+    } else if (customer.customerType === 2) {
+      customer.customerType = this.customerTypeService.customerTypeList[1];
     }
-    for (let i = 0; i < this.customer.length; i++) {
-      if (this.customer[i].customerId === id) {
-        this.customer[i] = customer;
+    this.customerList.push(customer);
+  }
+
+  getById(id) {
+    for (const item of this.customerList) {
+      if (item.id === id) {
+        return item;
       }
     }
   }
 
-  deleteCustomer(id: number) {
-    this.customer = this.customer.filter(customer => {
-      return customer.customerId !== id;
+  update(customer) {
+    if (customer.customerType === 1) {
+      customer.customerType = this.customerTypeService.customerTypeList[0];
+    } else if (customer.customerType === 2) {
+      customer.customerType = this.customerTypeService.customerTypeList[1];
+    }
+    for (let i = 0; i < this.customerList.length; i++) {
+      if (this.customerList[i].id === customer.id) {
+        this.customerList[i] = customer;
+      }
+    }
+    console.log(this.customerList);
+  }
+
+  delete(id) {
+    this.customerList = this.customerList.filter(customer => {
+      return customer.id !== id;
     });
   }
 }

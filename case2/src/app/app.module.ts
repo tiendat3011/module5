@@ -1,42 +1,47 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
-import { FacilityComponent } from './facility/facility/facility.component';
-import { CustomerComponent } from './customer/component/customer/customer.component';
-import { ContractComponent } from './contract/contract/contract.component';
-import { ModalCreateCustomerComponent } from './customer/component/modal-create-customer/modal-create-customer.component';
-import { ModalUpdateCustomerComponent } from './customer/component/modal-update-customer/modal-update-customer.component';
-import { ModalUpdateFacilityComponent } from './facility/modal-update-facility/modal-update-facility.component';
-import { ModalCreateFacilityComponent } from './facility/modal-create-facility/modal-create-facility.component';
-import { ModalCreateContractComponent } from './contract/modal-create-contract/modal-create-contract.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './header/header.component';
+import {HomeComponent} from './home/home.component';
+import {FooterComponent} from './footer/footer.component';
+import {ContractComponent} from './contract/contract/contract.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
+import {ListFacilityComponent} from './facility/list-facility/list-facility.component';
+import {UpdateCustomerComponent} from './customer/update-customer/update-customer.component';
+import {ListCustomerComponent} from './customer/list-customer/list-customer.component';
+import {CreateCustomerComponent} from './customer/create-customer/create-customer.component';
+
+const routes: Routes = [
+  {path: 'home', component: HomeComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+
+];
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
     FooterComponent,
-    FacilityComponent,
-    CustomerComponent,
+    ListFacilityComponent,
+    ListCustomerComponent,
+    UpdateCustomerComponent,
     ContractComponent,
     HomeComponent,
-    ModalCreateCustomerComponent,
-    ModalUpdateCustomerComponent,
-    ModalUpdateFacilityComponent,
-    ModalCreateFacilityComponent,
-    ModalCreateContractComponent,
+    CreateCustomerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule.forRoot(routes),
     ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+}

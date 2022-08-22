@@ -5,29 +5,13 @@ import {CustomerType} from '../model/type-customer';
   providedIn: 'root'
 })
 export class CustomerTypeService {
+  customerTypeList: CustomerType[] = [];
 
   constructor() {
-  }
-
-  customerType: CustomerType[] = [{
-    customerTypeId: 1,
-    customerTypeName: 'Member'
-  },
-    {
-      customerTypeId: 2,
-      customerTypeName: 'Silver'
-    },
-    {
-      customerTypeId: 3,
-      customerTypeName: 'Gold'
-    },
-    {
-      customerTypeId: 4,
-      customerTypeName: 'Diamond'
-    }
-  ];
-
-  getAll() {
-    return this.customerType;
+    this.customerTypeList.push({
+      id: 1, name: 'Member'
+    }, {
+      id: 2, name: 'Vip'
+    });
   }
 }
