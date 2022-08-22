@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from '../../service/customer.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {TypeCustomer} from '../../model/type-customer';
+import {CustomerType} from '../../model/type-customer';
 import {CustomerTypeService} from '../../service/customer-type.service';
 import {Router} from '@angular/router';
 
@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class ModalCreateCustomerComponent implements OnInit {
   customerFormCreate: FormGroup = new FormGroup({
-    // id: new FormControl('',[Validators.required]),
+    id: new FormControl('', [Validators.required]),
     code: new FormControl('', [Validators.required, Validators.pattern('^KH-[0-9]{4}$')]),
     name: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
@@ -24,7 +24,7 @@ export class ModalCreateCustomerComponent implements OnInit {
     address: new FormControl('', Validators.required),
     typeCustomer: new FormControl('', Validators.required),
   });
-  customerType: TypeCustomer[] = this.customerTypeService.getAll();
+  customerType: CustomerType[] = this.customerTypeService.getAll();
 
   constructor(private customerService: CustomerService,
               private customerTypeService: CustomerTypeService,
@@ -35,7 +35,7 @@ export class ModalCreateCustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  submit() {
     const customer = this.customerFormCreate.value;
     this.customerService.create(customer);
     this.router.navigate(['/customer']);

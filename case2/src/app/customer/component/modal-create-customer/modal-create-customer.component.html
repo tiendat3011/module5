@@ -1,74 +1,87 @@
-<div class="modal" id="myModalCreateCustomer">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="p-3 bg-modal">
-        <h4 style="text-align: center">Create New Customer</h4>
+<div class="container">
+  <div class="row">
+    <div style="text-align: center"><h3>Create Customer</h3></div>
 
-        <div class="form-group">
-          <label>Mã khách hàng</label>
-          <input class="form-control" type="text" id="add-customerCode">
-        </div>
+    <div class="col-3"></div>
+    <div class="col-6">
 
-        <div class="form-group">
-          <label>Tên khách hàng</label>
-          <input class="form-control" type="text" id="add-customerName">
+      <div class="body_center-2 container">
+        <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+        <form [formGroup]="customerFormCreate" (ngSubmit)="submit()" novalidate>
+          <div class="mb-3">
+            <label class="form-label">Id</label>
+            <input class="form-control" type="number" formControlName="id">
+          </div>
 
-        </div>
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input class="form-control" type="text" formControlName="name">
+          </div>
+          <div style="color: red"
+               *ngIf="customerFormCreate.controls.name.hasError('pattern')&&customerFormCreate.controls.name.touched">
+            Name has Uppercase
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Birth Day</label>
+            <input class="form-control" type="date" formControlName="birthday">
+          </div>
 
-        <div class="form-group">
-          <label>Ngày sinh</label>
-          <input class="form-control" type="date" id="add-customerBirthday">
+          <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <select name="gender" class="form-control" formControlName="gender">
+              <option value="" >--00--</option>
+              <option value="Male" [defaultSelected]="">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
 
-        </div>
 
-        <div class="form-group">
-          <label>Giới tính</label>
-          <select id="add-customerGender" class="form-control w-100">
+          <div class="mb-3">
+            <label class="form-label"> Id Card</label>
+            <input class="form-control" type="text" formControlName="idCard">
+          </div>
+          <div style="color: red"
+               *ngIf="customerFormCreate.controls.idCard.hasError('pattern')&&customerFormCreate.controls.idCard?.touched">
+            Id Card has 9 digital
+          </div>
 
-            <option value="0">Nam</option>
-            <option value="1">Nữ</option>
-            <option value="2">Khác</option>
+          <div class="mb-3">
+            <label class="form-label"> Phone</label>
+            <input class="form-control" type="text" formControlName="phone">
+            <div style="color: red"
+                 *ngIf="customerFormCreate.controls.phone.hasError('pattern')&&customerFormCreate.controls.phone?.touched">
+              Id Card has 9 digital
+            </div>
+          </div>
 
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Căn cước công dân</label>
-          <input class="form-control" type="text" id="add-customerIdCard">
+          <div class="mb-3">
+            <label class="form-label"> Email</label>
+            <input class="form-control" type="text" formControlName="email">
+          </div>
+          <div style="color: red"
+               *ngIf="customerFormCreate.controls.email.hasError('email')&&customerFormCreate.controls.email.touched">
+            Wrong Format
+          </div>
+          <div class="mb-3">
+            <label class="form-label"> Address</label>
+            <input class="form-control" type="text" formControlName="address">
+          </div>
+          <div class="mb-3">
+            <label class="form-label"> Type</label>
 
-        </div>
-
-        <div class="form-group">
-          <label>Số điện thoại</label>
-          <input class="form-control" type="text" id="add-customerPhone">
-
-        </div>
-
-        <div class="form-group">
-          <label>Email</label>
-          <input class="form-control" type="text" id="add-customerEmail">
-
-        </div>
-
-        <div class="form-group">
-          <label>Địa chỉ</label>
-          <input class="form-control" type="text" id="add-customerAddress">
-        </div>
-
-        <div class="form-group">
-          <label>Kiểu khách hàng</label>
-          <select class="form-control w-100" id="add-customerTypeId">
-            <option value="1">Diamond</option>
-            <option value="2">Platinum</option>
-            <option value="3">Gold</option>
-            <option value="4">Silver</option>
-            <option value="5">Member</option>
-          </select>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="submit">Add new</button>
-          <button class="btn btn-primary" type="submit" data-dismiss="modal">Cancel</button>
-        </div>
+            <select id="customerType" formControlName="customerType" name="customerType"  class="form-control">
+              <option value="" disabled selected="selected">Please choose </option>
+              <option *ngFor="let customerType of customerType"
+                      [ngValue]="customerType">{{customerType.customerTypeName}}</option>
+            </select>
+          </div>
+          <div class="mb-3" style="text-align: center">
+            <input value="Create" type="submit" class="btn btn-primary" [disabled]="!customerFormCreate.valid" >&nbsp;
+            <a  type="button" class="btn btn-danger" [routerLink]="['/customer']">Cancel</a>
+          </div>
+        </form>
       </div>
     </div>
+    <div class="col-3"></div>
   </div>
 </div>

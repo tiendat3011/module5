@@ -12,6 +12,22 @@
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
     <td><a [routerLink]="['/product/edit',product.id]">Edit</a></td>
+    <td><a (click)="openDelete(contentDelete, product)">Delete</a></td>
 
   </tr>
 </table>
+<!--Delete Modal-->
+<ng-template #contentDelete let-modal>
+  <div class="modal-header bg-warning">
+    <h4 class="modal-title">Cảnh báo</h4>
+    <button type="button" class="btn btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    </button>
+  </div>
+  <div class="modal-body">
+    <span>Bạn có muốn xóa sản phẩm <span class="text-danger">{{deleteName}}</span> không?</span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Hủy bỏ</button>
+    <button data-dismiss="modal" class="btn btn-outline-danger" (click)="onDelete()">Xóa</button>
+  </div>
+</ng-template>
