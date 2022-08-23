@@ -16,11 +16,11 @@ export class ListCustomerComponent implements OnInit {
 
   constructor(private customerService: CustomerService,
               private router: Router) {
+    this.customerList = this.customerService.getAll();
 
   }
 
   ngOnInit(): void {
-    this.customerList = this.customerService.getAll();
   }
 
   valueDelete(id: number, name: string) {

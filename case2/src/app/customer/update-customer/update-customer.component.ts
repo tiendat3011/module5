@@ -7,7 +7,7 @@ import {CustomerTypeService} from '../service/customer-type.service';
 import {CustomerService} from '../service/customer.service';
 
 @Component({
-  selector: 'app-modal-update-list-customer',
+  selector: 'app-update-customer',
   templateUrl: './update-customer.component.html',
   styleUrls: ['./update-customer.component.css']
 })

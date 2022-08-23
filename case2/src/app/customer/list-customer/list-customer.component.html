@@ -6,9 +6,11 @@
     <div class="center container-fluid">
       <h1 style="text-align: center ">List Customer</h1>
       <div>
+        <a [routerLink]="['/customer/create-customer']"  class="text-white">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCustomer ">
-          <a [routerLink]="['/list-customer/create']"  class="text-white"> Create</a>
+          Create
         </button>
+        </a>
       </div>
       <table style="border-collapse:  collapse; width: 100%" id="employeeList">
         <thead>
@@ -30,7 +32,7 @@
         <tr *ngFor="let temp of customerList ">
           <td>{{temp.id}}</td>
           <td>{{temp.name}}</td>
-          <td>{{temp.birthday| date: 'dd/MM/yyyy'}}</td>
+          <td>{{temp.birthday}}</td>
           <td *ngIf="temp.gender==true">Nam</td>
           <td *ngIf="temp.gender==false">Nữ</td>
           <td>{{temp.idCard}}</td>
@@ -40,8 +42,10 @@
           <td>{{temp.customerType.name}}</td>
           <td>
             <button type="button" class="btn btn-primary">
-              <a [routerLink]="['../update-list-customer', temp.id]" style="color: white">Edit</a>
+              <a [routerLink]="['../update-customer', temp.id]" style="color: white">Edit</a>
             </button>
+          </td>
+          <td>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="valueDelete(temp.id, temp.name)"
                     style="margin-left: 5px">
               Delete
@@ -59,8 +63,9 @@
       <button class="btn btn-light">Next</button>
     </div>
   </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel"  >
+
+    <div class="modal-dialog" style="background-color: white">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title " style="color: red" id="exampleModalLabel">Cảnh Báo !!! </h5>

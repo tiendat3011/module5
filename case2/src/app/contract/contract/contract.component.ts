@@ -8,16 +8,15 @@ import {ContractService} from '../service/contract.service';
   styleUrls: ['./contract.component.css']
 })
 export class ContractComponent implements OnInit {
-  contract: Contract[] = [];
+  contractList: Contract[] = [];
 
   constructor(private contractService: ContractService) {
+
   }
 
   ngOnInit(): void {
-    this.getAll();
+    this.contractList = this.contractService.getAllContract();
   }
 
-  getAll() {
-    this.contract = this.contractService.getAll();
-  }
+
 }

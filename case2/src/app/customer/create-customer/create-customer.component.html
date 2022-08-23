@@ -2,7 +2,7 @@
   <div class="row">
     <div class="bg-white">
       <div class="h1 center-box "> Thêm mới Customer </div>
-      <form class="p-3" [formGroup]="customerForm" (ngSubmit)="createCustomer()">
+      <form class="p-3" [formGroup]="customerForm" (ngSubmit)="createCustomer()" novalidate>
         <div class="form-group" style="margin-bottom: 1rem">
           <label >Nhập tên:</label>
           <input type="text" class="form-control" placeholder="Enter name"  formControlName="name">
@@ -91,8 +91,8 @@
           </select>
         </div>
         <div style="margin-bottom: 1rem;margin-top: 5px">
-          <button [routerLink]="['/list-customer/list-list-customer']" type="submit" class="btn btn-primary" value="Back"> Quay lại</button>
-          <button class="btn btn-danger" style="margin-left: 5px">Thêm mới</button>
+          <button [routerLink]="['/customer/list-customer']" type="button" class="btn btn-primary" value="Back"> Quay lại</button>
+          <button class="btn btn-danger" style="margin-left: 5px" [disabled]="customerForm.invalid">Thêm mới</button>
         </div>
       </form>
     </div>

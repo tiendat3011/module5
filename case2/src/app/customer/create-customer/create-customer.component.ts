@@ -6,7 +6,7 @@ import {CustomerTypeService} from '../service/customer-type.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-modal-create-list-customer',
+  selector: 'app-create-customer',
   templateUrl: './create-customer.component.html',
   styleUrls: ['./create-customer.component.css']
 })

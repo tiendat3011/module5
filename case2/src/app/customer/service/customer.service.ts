@@ -11,17 +11,17 @@ export class CustomerService {
   constructor(private customerTypeService: CustomerTypeService) {
     this.customerList.push({
       id: 1,
-      name: 'Võ Tiến ',
-      birthday: '01-01-1990', gender: true, idCard: '123456789',
+      name: 'Võ Tiến Đạt ',
+      birthday: '29-11-1999', gender: true, idCard: '123456789',
       phone: 12345,
-      email: 'hoa@gmail.com',
+      email: 'tiendat30111999@gmail.com',
       address: 'QN',
       customerType: customerTypeService.customerTypeList[0]
     }, {
-      id: 2, name: 'Ly', birthday: '02-02-1999', gender: false, idCard: '222222',
+      id: 2, name: 'Trần Dog', birthday: '02-02-1999', gender: false, idCard: '222222',
       phone: 789123, email: 'ly@gmail.com', address: 'Da Nang', customerType: customerTypeService.customerTypeList[1]
     }, {
-      id: 3, name: 'Duc', birthday: '03-03-1995', gender: true, idCard: '333333',
+      id: 3, name: 'Lê Vịt', birthday: '03-03-1995', gender: true, idCard: '333333',
       phone: 132342, email: 'duc@gmail.com', address: 'HN', customerType: customerTypeService.customerTypeList[1]
     });
   }

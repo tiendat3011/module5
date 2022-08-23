@@ -1,7 +1,7 @@
 <div class="container" style="width: 50rem;margin: auto">
   <div class="row">
     <div class="bg-white">
-      <div class="h1 center-box "> Chỉnh sửa Customer </div>
+      <div class="h1 center-box "> Update Customer </div>
       <form class="p-3" [formGroup]="customerForm" (ngSubmit)="updateCustomer()">
         <input type="text" hidden formControlName="id">
         <div class="form-group" style="margin-bottom: 1rem">
@@ -96,8 +96,8 @@
           </select>
         </div>
         <div style="margin-bottom: 1rem;margin-top: 5px">
-          <button [routerLink]="['/list-customer/list-customer']" type="submit" class="btn btn-primary" value="Back"> Quay lại</button>
-          <button class="btn btn-danger" style="margin-left: 5px">Chỉnh sửa</button>
+          <button [routerLink]="['/customer/list-customer']" type="submit" class="btn btn-primary" value="Back"> Quay lại</button>
+          <button class="btn btn-danger" style="margin-left: 5px" [disabled]="customerForm.invalid">Chỉnh sửa</button>
         </div>
       </form>
     </div>
