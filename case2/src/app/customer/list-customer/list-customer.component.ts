@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Customer} from '../model/customer';
 import {CustomerService} from '../service/customer.service';
 import {Router} from '@angular/router';
+import {CustomerType} from '../model/type-customer';
 
 
 @Component({
@@ -11,16 +12,31 @@ import {Router} from '@angular/router';
 })
 export class ListCustomerComponent implements OnInit {
   customerList: Customer[] = [];
-  id = 0;
-  name = '';
+  customerTypeList: CustomerType[ ] = [];
+  id: number;
+  name: string;
+  p = 1;
 
   constructor(private customerService: CustomerService,
               private router: Router) {
-    this.customerList = this.customerService.getAll();
-
   }
 
   ngOnInit(): void {
+    this.getAll();
+    this.getAllCustomerType();
+    this.deleteCustomer();
+  }
+
+  getAll() {
+    this.customerService.getAll().subscribe(value => {
+      this.customerList = value;
+    });
+  }
+
+  getAllCustomerType() {
+    this.customerService.getAllCustomerType().subscribe(value => {
+      this.customerTypeList = value;
+    });
   }
 
   valueDelete(id: number, name: string) {
@@ -28,8 +44,11 @@ export class ListCustomerComponent implements OnInit {
     this.name = name;
   }
 
-  delete() {
-    this.customerService.delete(this.id);
-    this.customerList = this.customerService.getAll();
+  deleteCustomer() {
+    this.customerService.deleteCustomer(this.id).subscribe(value => {
+      this.ngOnInit();
+    }, error => {
+      console.log(error);
+    });
   }
 }

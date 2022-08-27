@@ -1,0 +1,179 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white " style="padding-top: 0px">
+    <div class="container-fluid" >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarExample01"
+        aria-controls="navbarExample01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div
+    class="p-5 text-center bg-image"
+    style="
+      background-image: url('https://wallpapersnap.com/wallpapers/full/5/4/1/74880.jpg');
+      height: 250px;
+
+    "
+  >
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+
+    </div>
+  </div>
+  <!-- Background image -->
+</header>
+
+<div class="bg-menu table font-weight-bold" style="padding-top: 50px">
+  <div class="container-fluid body">
+    <div class="center container-fluid">
+      <h1 style="text-align: center">Danh Sách Bệnh Án  ʕ •ᴥ•ʔ </h1>
+      <table style="border-collapse:  collapse; width: 100%" id="employeeList">
+        <thead>
+        <tr>
+          <th class="text-center">STT</th>
+          <th class="text-center">Mã Bệnh Án</th>
+          <th class="text-center">Mã Bệnh Nhân</th>
+          <th class="text-center">Tên Bệnh Nhân</th>
+          <th class="text-center">Ngày Nhập Viện</th>
+          <th class="text-center">Ngày Ra Viện</th>
+          <th class="text-center">Lý Do Nhập Viện</th>
+          <th class="text-center">Phương Pháp Điều Trị</th>
+          <th class="text-center">Bác Sĩ Điều Trị</th>
+          <th class="text-center">Update</th>
+          <th class="text-center">Delete</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center"
+
+            *ngFor="let benhNhan of benhNhanList | paginate: { itemsPerPage: 3, currentPage: p } ;index as i">
+
+          <td>{{(i + 1) + (3 * (p-1))}}</td>
+          <td>{{benhNhan.benhAn.code}}</td>
+          <td>{{benhNhan.code}}</td>
+          <td>{{benhNhan.name}}</td>
+          <td>{{benhNhan.dateStart | date: 'dd/MM/yyyy'}}</td>
+          <td>{{benhNhan.dateEnd| date: 'dd/MM/yyyy'}}</td>
+          <td>{{benhNhan.lyDo}}</td>
+          <td>{{benhNhan.phuongPhap}}</td>
+          <td>{{benhNhan.bacSi}}</td>
+          <td style="text-align: center">
+            <a routerLink="/edit-customer/{{benhNhan.id}}">
+              <button class="btn btn-light">
+                <i style="font-size: 1.5rem" class="fa-solid fa-pen-to-square btn text-info"></i>
+              </button>
+            </a>
+          </td>
+          <td style="text-align: center">
+            <a style="color: white" href="#"
+               (click)="valueOf(benhNhan.id, benhNhan.name)"
+               data-toggle="modal"
+               data-target="#delete">
+              <button class="btn btn-light">
+                <i style=" font-size: 1.5rem" class="fa-solid fa-trash-can btn text-danger"></i>
+              </button>
+            </a>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+<div class="modal" id="delete">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100 text-center" id="name">You want delete {{name}} ?</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="delete()">
+          <a class="text-white">Xóa</a>
+        </button>
+        <button type="button" class="btn btn-dark " data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-secondary text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #3b5998;"
+        href="https://www.facebook.com/"
+        role="button"
+      ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #55acee;"
+        href="https://twitter.com/home?lang=vi"
+        role="button"
+      ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #dd4b39;"
+        href="http://google.com/"
+        role="button"
+      ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #ac2bac;"
+        href="#!"
+        role="button"
+      ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #0082ca;"
+        href="#!"
+        role="button"
+      ><i class="fab fa-linkedin-in"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #443f3f;"
+        href="https://github.com/"
+        role="button"
+      ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">Codegym</a>
+  </div>
+  <!-- Copyright -->
+</footer>

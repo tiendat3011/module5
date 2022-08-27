@@ -1,6 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Facility} from '../model/facility';
 import {FacilityService} from '../service/facility.service';
+import {Router} from '@angular/router';
+import {FacilityType} from '../model/facilityType';
+import {RentType} from '../model/rentType';
 
 @Component({
   selector: 'app-list-facility',
@@ -8,28 +11,49 @@ import {FacilityService} from '../service/facility.service';
   styleUrls: ['./list-facility.component.css']
 })
 export class ListFacilityComponent implements OnInit {
-
   facilityList: Facility[] = [];
-  id = 0;
-  name = '';
+  facilityTypes: FacilityType[] = [];
+  rentTypes: RentType[] = [];
+  id: number;
+  name: string;
 
-  constructor(private facilityService: FacilityService) {
+  constructor(private facilityService: FacilityService,
+              private router: Router) {
 
   }
 
   ngOnInit(): void {
-    this.facilityList = this.facilityService.getAllFacility();
+    this.getAllFacilityList();
+    this.getAllFacilityType();
+    this.getAllRentType();
   }
 
+  getAllFacilityList() {
+    this.facilityService.getAll().subscribe(value => {
+      this.facilityList = value;
+    });
+  }
+
+  getAllFacilityType() {
+    this.facilityService.getAllFacilityType().subscribe(value => {
+      this.facilityTypes = value;
+    });
+  }
+  getAllRentType() {
+    this.facilityService.getAllRentType().subscribe(value => {
+      this.rentTypes = value;
+    });
+  }
   valueDelete(id: number, name: string) {
     this.id = id;
     this.name = name;
   }
 
-  delete() {
-    this.facilityService.delete(this.id);
-    this.facilityList = this.facilityService.getAllFacility();
+  deleteFacility() {
+    this.facilityService.delete(this.id).subscribe(value => {
+      this.ngOnInit();
+    }, error => {
+      console.log(error);
+    });
   }
-
-
 }

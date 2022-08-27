@@ -11,8 +11,20 @@ import {Router} from '@angular/router';
   styleUrls: ['./create-customer.component.css']
 })
 export class CreateCustomerComponent implements OnInit {
-  customerForm: FormGroup;
-  customerTypeList: CustomerType[] = [];
+  customerTypes: CustomerType[];
+  customerForm: FormGroup = new FormGroup({
+    id: new FormControl(),
+    name: new FormControl('', [Validators.required, Validators.pattern('^[A-Z]+(([\',. -][a-zA-Z ])?[a-zA-Z]*)*$')]),
+    birthday: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+    idCard: new FormControl('', [Validators.required, Validators.pattern('^[1-9]{9}$')]),
+    phone: new FormControl('', [Validators.required, Validators.pattern('^090[0-9]{7}$')]),
+    email: new FormControl('', [Validators.required, Validators.pattern('^[\\w\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]),
+    address: new FormControl('', [Validators.required]),
+    customerType: new FormControl('', [Validators.required]),
+  });
+  id: number;
+
 
   constructor(private customerService: CustomerService,
               private router: Router,
@@ -20,23 +32,33 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customerTypeList = this.customerTypeService.customerTypeList;
-    console.log(this.customerTypeList);
-    this.customerForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.pattern('^[A-Z]+(([\',. -][a-zA-Z ])?[a-zA-Z]*)*$')]),
-      birthday: new FormControl(),
-      gender: new FormControl(true),
-      idCard: new FormControl('', [Validators.required, Validators.pattern('^[1-9]{9}$')]),
-      phone: new FormControl('', [Validators.required, Validators.pattern('^090[0-9]{7}$')]),
-      email: new FormControl('', [Validators.required, Validators.pattern('^[\\w\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]),
-      address: new FormControl('', Validators.required),
-      customerType: new FormControl(1),
+    this.customerService.getAllCustomerType().subscribe(value => {
+      this.customerTypes = value;
+    }, error => {
+      console.log(error);
     });
+    console.log(this.customerTypes);
   }
 
   createCustomer() {
-    const customer = this.customerForm.value;
-    this.customerService.save(customer);
-    this.router.navigateByUrl('/customer/list-customer');
+    if (this.customerForm.valid) {
+      const customer = this.customerForm.value;
+      console.log(customer.customerType);
+      this.customerService.getCustomerTypeById(customer.customerType).subscribe(customerType => {
+        customer.customerType = {
+          id: customerType.id,
+          name: customerType.name
+        };
+        this.customerService.createCustomer(customer).subscribe(() => {
+          setTimeout(() => {
+            alert('Create Succsess');
+          }, 1000);
+        }, error => {
+          console.log(error);
+        }, () => {
+          this.router.navigate(['/customer/list-customer']);
+        });
+      });
+    }
   }
 }

@@ -11,6 +11,9 @@ import {RouterModule, Routes} from '@angular/router';
 import {FacilityModule} from './facility/facility.module';
 import {CustomerModule} from './customer/customer.module';
 import {ContractModule} from './contract/contract.module';
+import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -28,11 +31,13 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FacilityModule,
     CustomerModule,
     ContractModule,
-    RouterModule.forRoot(routes),
-    ReactiveFormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    ToastrModule.forRoot({timeOut: 1000})
   ],
   providers: [],
   bootstrap: [AppComponent]

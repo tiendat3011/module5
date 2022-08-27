@@ -12,42 +12,65 @@ import {CustomerService} from '../service/customer.service';
   styleUrls: ['./update-customer.component.css']
 })
 export class UpdateCustomerComponent implements OnInit {
+  customerTypes: CustomerType[] = [];
   customerForm: FormGroup;
-  customerTypeList: CustomerType[] = [];
-  customer: Customer;
+  id: number;
 
   constructor(private router: Router,
               private customerTypeService: CustomerTypeService,
               private customerService: CustomerService,
               private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = +paramMap.get('id');
+      this.getCustomer(this.id);
+    });
   }
 
   ngOnInit(): void {
-    this.customerTypeList = this.customerTypeService.customerTypeList;
-    this.customerForm = new FormGroup({
-      id: new FormControl(),
-      name: new FormControl('', [Validators.required, Validators.pattern('^[A-Z]+(([\',. -][a-zA-Z ])?[a-zA-Z]*)*$')]),
-      birthday: new FormControl('', Validators.required),
-      gender: new FormControl(true),
-      idCard: new FormControl('', [Validators.required, Validators.pattern('^[1-9]{9}$')]),
-      phone: new FormControl('', [Validators.required, Validators.pattern('^090[0-9]{7}$')]),
-      email: new FormControl('', [Validators.required, Validators.pattern('^[\\w\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]),
-      address: new FormControl('', Validators.required),
-      customerType: new FormControl(),
-    });
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = +paramMap.get('id');
-      this.customer = this.customerService.getById(id);
-      console.log(this.customer);
-      this.customerForm.patchValue(this.customer);
-      this.customerForm.patchValue({customerType: this.customer.customerType.id});
+    this.customerService.getAllCustomerType().subscribe(value => {
+      this.customerTypes = value;
+    }, error => {
+      console.log(error);
     });
   }
 
+  getCustomer(id: number) {
+    return this.customerService.getCustomerById(id).subscribe(customer => {
+      this.customerForm = new FormGroup({
+        id: new FormControl(customer.id),
+        name: new FormControl(customer.name, [Validators.required, Validators.pattern('^[A-Z]+(([\',. -][a-zA-Z ])?[a-zA-Z]*)*$')]),
+        birthday: new FormControl(customer.birthday, [Validators.required]),
+        gender: new FormControl(customer.gender),
+        idCard: new FormControl(customer.idCard, [Validators.required, Validators.pattern('^[1-9]{9}$')]),
+        phone: new FormControl(customer.phone, [Validators.required, Validators.pattern('^090[0-9]{7}$')]),
+        email: new FormControl(customer.email, [Validators.required, Validators.pattern('^[\\w\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]),
+        address: new FormControl(customer.address, [Validators.required]),
+        customerType: new FormControl(customer.customerType.id, [Validators.required]),
+      });
+    }, error => {
+      console.log(error);
+    });
+  }
 
-  updateCustomer() {
-    const customer = this.customerForm.value;
-    this.customerService.update(customer);
-    this.router.navigateByUrl('customer/list-customer');
+  submit() {
+    if (this.customerForm.valid) {
+      const customer = this.customerForm.value;
+      this.customerService.getCustomerTypeById(customer.customerType).subscribe(customerType => {
+        customer.customerType = {
+          id: customerType.id,
+          name: customerType.name
+        };
+        this.customerService.updateCustomer(this.id, customer).subscribe(() => {
+          setTimeout(() => {
+            alert('Edit Success');
+          }, 1000);
+        }, error => {
+          console.log(error);
+        }, () => {
+          this.router.navigate(['/customer/list-customer']);
+        });
+      });
+    }
+
   }
 }

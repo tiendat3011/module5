@@ -6,10 +6,10 @@
     <div class="center container-fluid">
       <h1 style="text-align: center ">List Customer</h1>
       <div>
-        <a [routerLink]="['/customer/create-customer']"  class="text-white">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCustomer ">
-          Create
-        </button>
+        <a [routerLink]="['/customer/create-customer']" class="text-white">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCustomer ">
+            Create
+          </button>
         </a>
       </div>
       <table style="border-collapse:  collapse; width: 100%" id="employeeList">
@@ -29,7 +29,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let temp of customerList ">
+        <tr *ngFor="let temp of customerList | paginate:{ itemsPerPage: 2, currentPage: p }">
           <td>{{temp.id}}</td>
           <td>{{temp.name}}</td>
           <td>{{temp.birthday}}</td>
@@ -46,7 +46,8 @@
             </button>
           </td>
           <td>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="valueDelete(temp.id, temp.name)"
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    (click)="valueDelete(temp.id, temp.name)"
                     style="margin-left: 5px">
               Delete
             </button>
@@ -55,15 +56,11 @@
         </tbody>
       </table>
     </div>
-    <div>
-      <button class="btn btn-light">Previous</button>
-      <button class="btn btn-light">1</button>
-      <button class="btn btn-light">2</button>
-      <button class="btn btn-light">...</button>
-      <button class="btn btn-light">Next</button>
+    <div class="container navigation" style="display: flex;justify-content: center;margin-top: 10px">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
   </div>
-  <div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel"  >
+  <div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel">
 
     <div class="modal-dialog" style="background-color: white">
       <div class="modal-content">
@@ -76,7 +73,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="delete()" data-bs-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-primary" (click)="deleteCustomer()" data-bs-dismiss="modal">Delete
+          </button>
         </div>
       </div>
     </div>

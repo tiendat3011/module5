@@ -14,8 +14,23 @@ import {Router} from '@angular/router';
 })
 export class CreateFacilityComponent implements OnInit {
   facilityTypes: FacilityType[] = [];
-  rentTypeList: RentType[] = [];
-  facilityForm: FormGroup;
+  rentType: RentType[] = [];
+  facilityForm: FormGroup = new FormGroup({
+    id: new FormControl(),
+    name: new FormControl('', [Validators.required, Validators.pattern('^[A-Z]+(([\',. -][a-zA-Z ])?[a-zA-Z]*)*$')]),
+    area: new FormControl('', [Validators.required, Validators.min(1)]),
+    cost: new FormControl('', [Validators.required, Validators.min(0)]),
+    maxPeople: new FormControl('', [Validators.required, Validators.min(1)]),
+    standardRoom: new FormControl('', [Validators.required]),
+    descriptionOtherConvenience: new FormControl('', [Validators.required]),
+    poolArea: new FormControl('', [Validators.required, Validators.min(1)]),
+    numberOfFloors: new FormControl('', [Validators.required, Validators.min(0)]),
+    facilityFree: new FormControl('', [Validators.required]),
+    url: new FormControl('', [Validators.required]),
+    rentType: new FormControl(''),
+    facilityType: new FormControl(''),
+  });
+  id: number;
 
   constructor(private facilityService: FacilityService,
               private facilityTypeService: FacilityTypeService,
@@ -24,40 +39,43 @@ export class CreateFacilityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.facilityTypeService.getAllFacilityType().subscribe(facilityType => {
-      this.facilityTypes = facilityType;
+    this.facilityService.getAllFacilityType().subscribe(value => {
+      this.facilityTypes = value;
     }, err => {
     }, () => {
-      this.rentTypeService.getAllRentType().subscribe(value => {
-        this.rentTypeList = value;
+      this.facilityService.getAllRentType().subscribe(value => {
+        this.rentType = value;
       }, error => {
       }, () => {
-        this.facilityForm = new FormGroup({
-          name: new FormControl('', [Validators.required, Validators.pattern('^[A-Z]+(([\',. -][a-zA-Z ])?[a-zA-Z]*)*$')]),
-          area: new FormControl('', [Validators.required, Validators.min(1)]),
-          cost: new FormControl('', [Validators.required, Validators.min(0)]),
-          maxPeople: new FormControl('', [Validators.required, Validators.min(1)]),
-          standardRoom: new FormControl('0', [Validators.required]),
-          descriptionOtherConvenience: new FormControl('0', [Validators.required]),
-          poolArea: new FormControl('0', [Validators.required, Validators.min(1)]),
-          numberOfFloors: new FormControl('0', [Validators.required, Validators.min(0)]),
-          facilityFree: new FormControl('0', [Validators.required]),
-          url: new FormControl('0', [Validators.required]),
-          rentType: new FormControl('1'),
-          facilityType: new FormControl('1'),
-        });
       });
     });
   }
 
   createFacility() {
-    console.log(this.facilityForm.value);
-    this.facilityService.saveFacility(this.facilityForm.value).subscribe(value => {
-      this.router.navigateByUrl('list-facility').then(() => {
-        setTimeout(() => {
-          alert('Them moi thanh cong');
-        }, 1000);
+    const facility = this.facilityForm.value;
+
+    this.facilityService.findByIdFacilityType(facility.facilityType).subscribe(value => {
+      this.facilityService.findByIdRentType(facility.rentType).subscribe(value1 => {
+        facility.facilityType = {
+          id: value.id,
+          name: value.name
+        };
+        facility.rentType = {
+          id: value1.id,
+          name: value1.name
+        };
+        this.facilityService.save(facility).subscribe(() => {
+          setTimeout(() => {
+            alert('Create Succsess');
+          }, 1000);
+        }, error => {
+          console.log(error);
+        }, () => {
+          this.router.navigate(['/facility/list-facility']);
+        });
       });
     });
+
+
   }
 }

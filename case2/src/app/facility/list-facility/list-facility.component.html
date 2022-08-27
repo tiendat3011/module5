@@ -25,7 +25,7 @@
                 </div>
                 <h3>{{temp.name}}"</h3>
                 <ul>
-                  <li>Diện tích phòng: {{temp.name}}m</li>
+                  <li>Price: {{temp.cost}}$</li>
                 </ul>
                 <div style="width: 100%">
                   <button style="width: 49%" class="book_now">
@@ -44,7 +44,7 @@
     </div>
   </div>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="background-color: white">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title " style="color: red" id="exampleModalLabel">Cảnh Báo !!! </h5>
@@ -55,7 +55,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="delete()">Delete</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteFacility()">Delete</button>
         </div>
       </div>
     </div>

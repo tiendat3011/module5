@@ -1,8 +1,8 @@
-<div class="container" style="width: 50rem;margin: auto">
+<div class="container" style="width: 50rem;margin-top: 100px">
   <div class="row">
     <div class="bg-white">
       <div class="h1 center-box "> Chỉnh sửa dịch vụ </div>
-      <form class="p-3" [formGroup]="facilityForm" (ngSubmit)="updateFacility()">
+      <form *ngIf="facilityForm" class="p-3" [formGroup]="facilityForm" (ngSubmit)="update(id)">
         <input type="text" hidden formControlName="id">
         <div class="form-group" style="margin-bottom: 1rem">
           <label >Tên</label>
@@ -97,7 +97,7 @@
         <div class="form-group">
           <label>Kiểu thuê</label>
           <select class="form-control w-100" id="add-rentType" formControlName="rentType">
-            <option *ngFor="let item of rentTypeList" [ngValue]="item.id">{{item.name}}</option>
+            <option *ngFor="let item of rentType" [value]="item.id">{{item.name}}</option>
           </select>
           <p style="color: red"
              *ngIf="facilityForm.controls.rentType.hasError('required')&& (facilityForm.controls.rentType.touched)">
@@ -112,7 +112,16 @@
             Không để trống
           </p>
         </div>
-
+        <div class="form-group">
+          <label>Loại Dịch Vụ</label>
+          <select class="form-control w-100"  formControlName="facilityType">
+            <option *ngFor="let item of facilityTypes" [ngValue]="item.id">{{item.name}}</option>
+          </select>
+          <p style="color: red"
+             *ngIf="facilityForm.controls.facilityType.hasError('required')&& (facilityForm.controls.facilityType.touched)">
+            Không để trống
+          </p>
+        </div>
         <div style="margin-bottom: 1rem;margin-top: 5px">
           <button [routerLink]="['/facility/list-facility']" type="submit" class="btn btn-primary" value="Back"> Quay lại</button>
           <button class="btn btn-danger" style="margin-left: 5px">Chỉnh sửa</button>

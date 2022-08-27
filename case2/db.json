@@ -1,0 +1,165 @@
+{
+  "customerType": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    },
+    {
+      "id": 5,
+      "name": "Member"
+    }
+  ],
+  "customer": [
+    {
+      "id": 2,
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "name": "Lê Dog",
+      "birthday": "1999-09-30",
+      "gender": 1,
+      "idCard": "123456789",
+      "phone": "090000000",
+      "email": "dddn@gmail.com",
+      "address": "Đà Nẵng"
+    },
+    {
+      "id": 3,
+      "name": "D",
+      "birthday": "2022-08-06",
+      "gender": true,
+      "idCard": "123456789",
+      "phone": "0900000000",
+      "email": "tiendat30111999@gmail.com",
+      "address": "HNj",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Daaaa",
+      "birthday": "2022-08-05",
+      "gender": false,
+      "idCard": "123456789",
+      "phone": "0900000000",
+      "email": "hungvonhu2811@gmail.com",
+      "address": "HNn",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      }
+    }
+  ],
+  "facility": [
+    {
+      "id": 2,
+      "name": "OCEAN STUDIO SUITE1",
+      "area": 80,
+      "cost": 1000,
+      "maxPeople": 3,
+      "standardRoom": "vip",
+      "descriptionOtherConvenience": "không",
+      "poolArea": 50,
+      "numberOfFloors": 2,
+      "facilityFree": "không",
+      "url": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F-370x239.jpg",
+      "rentType": {
+        "id": 1,
+        "name": "year"
+      },
+      "facilityType": {
+        "id": 1,
+        "name": "villa"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Mmmm",
+      "area": 1,
+      "cost": 1,
+      "maxPeople": 1,
+      "standardRoom": "vip",
+      "descriptionOtherConvenience": "khoong",
+      "poolArea": 1,
+      "numberOfFloors": 3,
+      "facilityFree": "000",
+      "url": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-F-370x239.jpg",
+      "rentType": {
+        "id": 1,
+        "name": "Year"
+      },
+      "facilityType": {
+        "id": 2,
+        "name": "Room"
+      }
+    },
+    {
+      "id": 4,
+      "name": "D",
+      "area": 1,
+      "cost": 1,
+      "maxPeople": 1,
+      "standardRoom": "1",
+      "descriptionOtherConvenience": "1",
+      "poolArea": 1,
+      "numberOfFloors": 1,
+      "facilityFree": "",
+      "url": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-F-370x239.jpg",
+      "rentType": {
+        "id": 1,
+        "name": "Year"
+      },
+      "facilityType": {
+        "id": 1,
+        "name": "House"
+      }
+    }
+  ],
+  "facilityType": [
+    {
+      "id": 1,
+      "name": "House"
+    },
+    {
+      "id": 2,
+      "name": "Room"
+    },
+    {
+      "id": 3,
+      "name": "Villa"
+    }
+  ],
+  "rentType": [
+    {
+      "id": 1,
+      "name": "Year"
+    },
+    {
+      "id": 2,
+      "name": "Month"
+    },
+    {
+      "id": 3,
+      "name": "Day"
+    },
+    {
+      "id": 4,
+      "name": "Hour"
+    }
+  ]
+}

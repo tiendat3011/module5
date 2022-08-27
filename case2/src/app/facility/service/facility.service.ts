@@ -1,126 +1,51 @@
 import {Injectable} from '@angular/core';
-import {Facility} from '../model/facility';
 import {RentTypeService} from './rent-type.service';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Facility} from '../model/facility';
 import {FacilityTypeService} from './facility-type.service';
-import {Observable, of} from 'rxjs';
+import {RentType} from '../model/rentType';
+import {FacilityType} from '../model/facilityType';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FacilityService {
+  private URL_FACILITY = 'http://localhost:3000/facility';
+  private URL_FACILITY_TYPE = 'http://localhost:3000/facilityType';
+  private URL_FACILITY_RENT_TYPE = 'http://localhost:3000/rentType';
   facilityList: Facility[] = [];
 
-  constructor(private rentTypeService: RentTypeService,
-              private facilityTypeService: FacilityTypeService) {
-    this.facilityList.push({
-        id: 1,
-        name: 'OCEAN SUITE',
-        area: 10,
-        cost: 1000,
-        maxPeople: 2,
-        rentType: {
-          id: 1,
-          name: 'Year'
-        },
-        standardRoom: 'vip',
-        descriptionOtherConvenience: 'không',
-        poolArea: 50,
-        numberOfFloors: 2,
-        facilityFree: 'không',
-        facilityType: {
-          id: 1,
-          name: 'House'
-        },
-        url: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg'
-      },
-      {
-        id: 2,
-        name: 'OCEAN STUDIO SUITE',
-        area: 80,
-        cost: 2000,
-        maxPeople: 3,
-        rentType: {
-          id: 1,
-          name: 'Year'
-        },
-        standardRoom: 'vip',
-        descriptionOtherConvenience: 'không',
-        poolArea: 50,
-        numberOfFloors: 3,
-        facilityFree: 'không',
-        facilityType: {
-          id: 1,
-          name: 'House'
-        },
-        url: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F-370x239.jpg'
-      },
-      {
-        id: 3,
-        name: 'OCEAN DELUXE',
-        area: 30,
-        cost: 3000,
-        maxPeople: 5,
-        rentType: {
-          id: 1,
-          name: 'Year'
-        },
-        standardRoom: 'vip',
-        descriptionOtherConvenience: 'không',
-        poolArea: 40,
-        numberOfFloors: 4,
-        facilityFree: 'không',
-        facilityType: {
-          id: 1,
-          name: 'House'
-        },
-        url: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Garden-Superior-TwinBed-1-F-370x239.jpg'
-      }, {
-        id: 4,
-        name: 'STUDIO  BEACH',
-        area: 30,
-        cost: 3000,
-        maxPeople: 5,
-        rentType: {
-          id: 1,
-          name: 'Year'
-        },
-        standardRoom: 'vip',
-        descriptionOtherConvenience: 'không',
-        poolArea: 40,
-        numberOfFloors: 4,
-        facilityFree: 'không',
-        facilityType: {
-          id: 1,
-          name: 'House'
-        },
-        url: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-F-370x239.jpg'
-      });
+  constructor(facilityTypeService: FacilityTypeService,
+              private http: HttpClient) {
   }
 
-  getAllFacility() {
-    return this.facilityList;
-    console.log(this.facilityList);
+  getAll(): Observable<Facility[]> {
+    return this.http.get<Facility[]>(this.URL_FACILITY);
   }
 
-  saveFacility(facility): Observable<Facility> {
-    this.facilityList.push(facility);
-    return of(facility);
+  getAllFacilityType(): Observable<Facility[]> {
+    return this.http.get<Facility[]>(this.URL_FACILITY_TYPE);
   }
-
-  delete(id: number) {
-    this.facilityList = this.facilityList.filter(facility => {
-      return facility.id !== id;
-    });
+  getAllRentType(): Observable<Facility[]> {
+    return this.http.get<Facility[]>(this.URL_FACILITY_RENT_TYPE);
   }
-
-  update(facility) {
+  save(facility: Facility): Observable<Facility> {
+    return this.http.post<Facility>(this.URL_FACILITY, facility);
   }
-
-  getById(id: number) {
-    for (const item of this.facilityList) {
-      if (item.id === id) {
-        return item;
-      }
-    }
+  findById(id: number): Observable<Facility> {
+    return this.http.get<Facility>(this.URL_FACILITY + '/' + id);
+  }
+  findByIdRentType(id: number): Observable<RentType> {
+    return this.http.get<RentType>(this.URL_FACILITY_RENT_TYPE + '/' + id);
+  }
+  findByIdFacilityType(id: number): Observable<FacilityType> {
+    return this.http.get<FacilityType>(this.URL_FACILITY_TYPE + '/' + id);
+  }
+  delete(id: number): Observable<Facility> {
+    return this.http.delete<Facility>(this.URL_FACILITY + '/' + id);
+  }
+  update(id: number, facility: Facility): Observable<Facility> {
+    return this.http.put<Facility>(this.URL_FACILITY + '/' + id, facility);
   }
 }

@@ -5,10 +5,15 @@
       <form class="p-3" [formGroup]="facilityForm" (ngSubmit)="createFacility()" *ngIf="facilityForm">
 <!--        <input type="text" hidden formControlName="id">-->
 
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom: 1rem">
+          <label >Loại Dịch Vụ</label>
           <select formControlName="facilityType" class="form-select">
-            <option [ngValue]="value" *ngFor="let value of facilityTypes">{{value.name}}</option>
+            <option [ngValue]="value.id" *ngFor="let value of facilityTypes">{{value.name}}</option>
           </select>
+          <p style="color: red"
+             *ngIf="facilityForm.controls.facilityType.hasError('required')&& (facilityForm.controls.facilityType.touched)">
+            Không để trống
+          </p>
         </div>
 
         <div class="form-group" style="margin-bottom: 1rem">
@@ -104,7 +109,7 @@
         <div class="form-group">
           <label>Kiểu thuê</label>
           <select class="form-control w-100" id="add-rentType" formControlName="rentType">
-            <option *ngFor="let item of rentTypeList" [ngValue]="item">{{item.name}}</option>
+            <option *ngFor="let item of rentType;" [ngValue]="item.id">{{item.name}}</option>
           </select>
           <p style="color: red"
              *ngIf="facilityForm.controls.rentType.hasError('required')&& (facilityForm.controls.rentType.touched)">

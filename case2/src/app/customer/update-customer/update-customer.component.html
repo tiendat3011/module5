@@ -1,12 +1,12 @@
-<div class="container" style="width: 50rem;margin: auto">
+<div class="container" style="width: 50rem;margin-top: 100px">
   <div class="row">
     <div class="bg-white">
-      <div class="h1 center-box "> Update Customer </div>
-      <form class="p-3" [formGroup]="customerForm" (ngSubmit)="updateCustomer()">
+      <div class="h1 center-box "> Update Customer</div>
+      <form class="p-3" [formGroup]="customerForm" (ngSubmit)="submit()">
         <input type="text" hidden formControlName="id">
         <div class="form-group" style="margin-bottom: 1rem">
-          <label >Nhập tên:</label>
-          <input type="text" class="form-control" placeholder="Enter name"  formControlName="name">
+          <label>Nhập tên:</label>
+          <input type="text" class="form-control" placeholder="Enter name" formControlName="name">
           <p style="color: red"
              *ngIf="customerForm.controls.name.hasError('required')&& (customerForm.controls.name.touched)">
             Không để trống
@@ -16,10 +16,10 @@
             Phải đúng định dạng
           </p>
         </div>
-
         <div class="form-group" style="margin-bottom: 1rem">
           <label>Ngày sinh:</label>
-          <input type="text" class="form-control" placeholder="Enter birthday" name="birthday" formControlName="birthday">
+          <input type="text" class="form-control" placeholder="Enter birthday" name="birthday"
+                 formControlName="birthday">
           <p style="color: red"
              *ngIf="customerForm.controls.birthday.hasError('required')&& (customerForm.controls.birthday.touched)">
             Không để trống
@@ -43,7 +43,7 @@
 
         <div class="form-group" style="margin-bottom: 1rem">
           <label>Chứng minh:</label>
-          <input type="text" class="form-control" placeholder="Enter CMND" formControlName="idCard" >
+          <input type="text" class="form-control" placeholder="Enter CMND" formControlName="idCard">
           <p style="color: red"
              *ngIf="customerForm.controls.idCard.hasError('required')&& (customerForm.controls.idCard.touched)">
             Không để trống
@@ -63,7 +63,7 @@
           </p>
           <p style="color: red"
              *ngIf="customerForm.controls.phone.hasError('pattern')&& (customerForm.controls.phone.touched)">
-            Phải đúng định dạng: 090 và 7 số nữa
+            Phải đúng định dạng: 090 và 7 số
           </p>
         </div>
 
@@ -82,7 +82,7 @@
 
         <div class="form-group" style="margin-bottom: 1rem">
           <label>Địa chỉ:</label>
-          <input type="text" class="form-control" placeholder="Enter địa chỉ" name="address" formControlName="address" >
+          <input type="text" class="form-control" placeholder="Enter địa chỉ" name="address" formControlName="address">
           <p style="color: red"
              *ngIf="customerForm.controls.address.hasError('required')&& (customerForm.controls.address.touched)">
             Không để trống
@@ -91,12 +91,14 @@
 
         <div class="form-group" style="margin-bottom: 1rem">
           <label> Kiểu khách hàng : </label>
-          <select name="customerType" class="form-control custom-select bg-light" id="customerType" formControlName="customerType">
-            <option *ngFor="let item of customerTypeList" [ngValue]="item.id">{{item.name}}</option>
+          <select name="customerType" class="form-control custom-select bg-light" id="customerType"
+                  formControlName="customerType">
+            <option *ngFor="let item of customerTypes" [ngValue]="item.id">{{item.name}}</option>
           </select>
         </div>
         <div style="margin-bottom: 1rem;margin-top: 5px">
-          <button [routerLink]="['/customer/list-customer']" type="submit" class="btn btn-primary" value="Back"> Quay lại</button>
+          <button [routerLink]="['/customer/list-customer']" type="submit" class="btn btn-primary" value="Back"> Quay lại
+          </button>
           <button class="btn btn-danger" style="margin-left: 5px" [disabled]="customerForm.invalid">Chỉnh sửa</button>
         </div>
       </form>

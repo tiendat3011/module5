@@ -1,0 +1,90 @@
+
+<div class="w-100">
+  <div class="w-25 m-0 p-0 float-left">&nbsp;</div>
+  <div class=" w-50 content float-left p-0">
+    <div class="p-3">
+      <form [formGroup]="benhNhanForm">
+        <div class="p-3 bg-modal ">
+          <h4 style="text-align: center">Sửa thông tin bệnh án</h4>
+
+          <div class="form-group">
+            <label>Mã bệnh nhân</label>
+            <input class="form-control" readonly type="text" formControlName="code">
+          </div>
+
+
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" type="text" formControlName="name">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="benhNhanForm.controls.name.hasError('required')
+        && (benhNhanForm.controls.name.dirty || benhNhanForm.controls.name.touched)">
+            Input name, pls!!!
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="benhNhanForm.controls.name.hasError('pattern')
+        && (benhNhanForm.controls.name.dirty || benhNhanForm.controls.name.touched)">
+            Wrong format
+          </div>
+
+          <div class="form-group">
+            <label>Ngày nhập viện</label>
+            <input class="form-control" type="date" formControlName="dateStart">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="benhNhanForm.controls.dateStart.hasError('required')
+        && (benhNhanForm.controls.dateStart.dirty || benhNhanForm.controls.dateStart.touched)">
+            Input day of birth, pls!!!
+          </div>
+
+          <div class="form-group">
+            <label>Ngày ra viện</label>
+            <input class="form-control" type="date" formControlName="dateEnd">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="benhNhanForm.controls.dateEnd.hasError('required')
+        && (benhNhanForm.controls.dateEnd.dirty || benhNhanForm.controls.dateEnd.touched)">
+            Input day of birth, pls!!!
+          </div>
+
+          <div class="form-group">
+            <label>Lý do nhập viện</label>
+            <input class="form-control" type="text" formControlName="lyDo">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="benhNhanForm.controls.lyDo.hasError('required')
+        && (benhNhanForm.controls.lyDo.dirty || benhNhanForm.controls.lyDo.touched)">
+            Nhập lý do, pls!!!
+          </div>
+
+          <div class="form-group">
+            <label>Phương pháp điều trị</label>
+            <input class="form-control" type="text" formControlName="phuongPhap">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="benhNhanForm.controls.phuongPhap.hasError('required')
+        && (benhNhanForm.controls.phuongPhap.dirty || benhNhanForm.controls.phuongPhap.touched)">
+            Nhập phương pháp, pls!!!
+          </div>
+
+          <div class="form-group">
+            <label>Bác sĩ điều trị</label>
+            <input class="form-control" type="text" formControlName="bacSi">
+          </div>
+
+          <div class="mb-3 text-danger" *ngIf="benhNhanForm.controls.bacSi.hasError('required')
+        && (benhNhanForm.controls.bacSi.dirty || benhNhanForm.controls.bacSi.touched)">
+            Nhập bác sĩ điều trị, pls!!!
+          </div>
+
+          <button class="btn btn-dark" (click)="onSubmitUpdate()">Update
+          </button>
+          &nbsp
+          <button [routerLink]="['']"  class="btn btn-dark" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

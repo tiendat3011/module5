@@ -1,0 +1,64 @@
+{
+  "benhNhanList": [
+    {
+      "id": 990,
+      "code": "BN-333",
+      "name": "Duy Trung",
+      "dateStart": "2016-08-07",
+      "dateEnd": "2019-09-09",
+      "lyDo": "Ngu",
+      "phuongPhap": "Chôn",
+      "bacSi": "En ti en",
+      "benhAn": {
+        "id": 3,
+        "code": "BA-003"
+      }
+    },
+    {
+      "id": 991,
+      "code": "BN-444",
+      "name": "Hảo Hảo",
+      "dateStart": "2016-08-07",
+      "dateEnd": "2019-09-09",
+      "lyDo": "Nhậu say",
+      "phuongPhap": "Nhậu tiếp",
+      "bacSi": "Trường Mập",
+      "benhAn": {
+        "id": 4,
+        "code": "BA-004"
+      }
+    },
+    {
+      "id": 992,
+      "code": "BN-555",
+      "name": "Duy Trung",
+      "dateStart": "2016-08-07",
+      "dateEnd": "2019-09-09",
+      "lyDo": "Dơ",
+      "phuongPhap": "Về tắm",
+      "bacSi": "Nờ tê nờ",
+      "benhAn": {
+        "id": 1,
+        "code": "BA-001"
+      }
+    }
+  ],
+  "benhAnList": [
+    {
+      "id": 1,
+      "code": "BA-001"
+    },
+    {
+      "id": 2,
+      "name": "BA-002"
+    },
+    {
+      "id": 3,
+      "name": "BA-003"
+    },
+    {
+      "id": 4,
+      "name": "BA-004"
+    }
+  ]
+}
