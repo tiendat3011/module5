@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
-@Request
+//@Request
 @RestController
 @CrossOrigin("*")
 public class BaiThi {
@@ -14,4 +14,4 @@ public class BaiThi {
     private IBenhAnService iBenhAnService;
     @Autowired
     private IBenhNhanService iBenhNhanService;
-    @GetMapping
+}
